@@ -20,9 +20,9 @@ await m.reply(global.wait)
         if (stderr.trim()) m.reply(stderr)
     }
 }
-handler.help = ['getplugin'].map(v => v + ' <text>')
+handler.help = ['getplugins'].map(v => v + ' <text>')
 handler.tags = ['owner']
-handler.command = /^(getplugin|gp)$/i
+handler.command = /^(getplugins|gp)$/i
 handler.rowner = true
 
 export default handler
