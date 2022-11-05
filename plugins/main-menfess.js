@@ -1,12 +1,14 @@
 import fs from 'fs'
+import moment from 'moment-timezone'
 const delay = time => new Promise(res => setTimeout(res, time))
 
-async function handler(m, { command }) {
+async function handler(m, { command, text, usedPrefix }) {
 
     conn.menfess = conn.menfess ? conn.menfess : {}
     let id = m.sender
-    find = Object.values(conn.menfess).find(menpes => menpes.status == 'wait')
-    roof = Object.values(conn.menfess).find(menpes => [menpes.a, menpes.b].includes(m.sender))
+    let find = Object.values(conn.menfess).find(menpes => menpes.status == 'wait')
+    let roof = Object.values(conn.menfess).find(menpes => [menpes.a, menpes.b].includes(m.sender))
+    let wib = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 
     switch(command) {
     case 'menfes': case 'menfess':
@@ -23,20 +25,20 @@ async function handler(m, { command }) {
     let logs = `➯ Pᴇsᴀɴ : ${pesan}\nJam : ${wib}`
     let imgr = fla.getRandom()
 
-    await conn.send2ButtonDoc(data.jid, tek, ssn, 'Lanjutkan', '.accmenfess', 'Tolak Menfess', '.tolakmenfess', m, { contextInfo: { externalAdReply: { showAdAttribution: true,
+    conn.sendButton(m.chat, `*Done* mengirim menfess kepada @${data.jid.split('@')[0]}`, logs, imgr, [['Menu', '.? all']], m)
+    await conn.send3ButtonDoc(data.jid, tek, ssn, 'Lanjutkan', '.accmenfess', 'Tolak Menfess', '.tolakmenfess', 'Menu', '.? all', m, { contextInfo: { externalAdReply: { showAdAttribution: true,
     mediaUrl: sig,
     mediaType: 2, 
-    description: sgc,
+    description: sig,
     title: "Follow Sɪɴɪ Cᴜʏ",
     body: wm,
     thumbnail: fs.readFileSync('./media/menfess.jpg'),
     sourceUrl: sig
     }}})
-    conn.sendButton(m.chat, `*Done* mengirim menfess kepada @${data.jid.split('@')[0]}`, logs, imgr, [['Menu', '.? all']], m)
     conn.menfess[id] = {
           id: id,
           a: m.sender,
-          b: jid,
+          b: data.jid,
           status: "wait",
         }
         break;
@@ -56,26 +58,28 @@ async function handler(m, { command }) {
             break
     
     case 'tolakmenfess':
-        if(!roof) return m.reply("Kamu belum memulai menfess..")
-        find = Object.values(conn.menfess).find(menpes => [menpes.a, menpes.b].includes(m.sender))
-        await conn.sendMessage(find.a, `_@${find.b.split("@")[0]} Menolak bermain menfess.._`, m)
-        m.reply("*^Done..*")
-        delete conn.menfess[find.id]
-        return !0
-        break;
+    case 'stopmenfess': {
+    let room = Object.values(conn.menfess).find(menpes => [menpes.a, menpes.b].includes(m.sender))
+    if (!room) return this.sendButton(m.chat, '_Kamu belum memulai menfess.._', author, null, [['Menu', `.? all`]], m)
+    m.reply('Ok')
+    let to = room.a == m.sender ? room.b : room.a
+    if (to) await this.sendButton(to, '_Partner meninggalkan chat_', author, null, [['Menu', `.? all`]], m)
+    delete conn.menfess[room.id]
+      return !0
+    }
+      break;
     }
 }
 
 handler.tags = ['anonymous']
 handler.help = ['menfess'].map(v => v + ' <nomor|nama|pesan>')
-handler.command = ['menfess', 'menfes', 'accmenfess', 'tolakmenfess']
+handler.command = /^(menfes?s|accmenfess|tolakmenfess|stopmenfess)$/i
 
 handler.private = true
 
 export default handler
 
-// By Ekuzika
-//cuma fix dikit
+//FIX By Ekuzika
 //Thx To
 //xzeera-id
 //ayang gw:v (citlaa_12)
