@@ -50,7 +50,7 @@ async function handler(m, { command, text, usedPrefix }) {
             find.status = 'chatting'
             conn.menfess[find.id] = {...find}
             find = Object.values(conn.menfess).find(menpes => [menpes.a, menpes.b].includes(m.sender))
-            conn.sendMessage(find.a, `_@${m.sender.split("@")[0]} menerima chat dengan anda, sekarang anda bisa melanjutkan menfes dengan dia.._\n\n*NOTE : Jika ingin berhenti dari menfess, silahkan ketik _.stopmenfess_ Untuk hapus session kalian..*`, m)
+            conn.sendMessage(find.a + '@s.whatsapp.net', `_@${m.sender.split("@")[0]} menerima chat dengan anda, sekarang anda bisa melanjutkan menfes dengan dia.._\n\n*NOTE : Jika ingin berhenti dari menfess, silahkan ketik _.stopmenfess_ Untuk hapus session kalian..*`, m)
             m.reply(`*^Done..*\n\nSekarang kamu bisa melanjutkan menfes dengan dia. Ketik sesuatu, bot akan otomatis mengirim pesan mu.\n\n*NOTE : Jika ingin berhenti dari menfess, silahkan ketik _.stopmenfess_ Untuk hapus session kalian..*`)
         } catch (e){
             m.reply(e)
