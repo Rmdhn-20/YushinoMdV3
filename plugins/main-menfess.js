@@ -65,9 +65,8 @@ async function handler(m, { command, text, usedPrefix }) {
     let to = room.a == m.sender ? room.b : room.a
     if (to) await this.sendButton(to, '_Partner meninggalkan chat_', author, null, [['Menu', `.? all`]], m)
     delete conn.menfess[room.id]
-      return !0
+    if (command === 'stopmenfess') break
     }
-      break;
     }
 }
 
@@ -82,5 +81,5 @@ export default handler
 //FIX By Ekuzika
 //Thx To
 //xzeera-id
-//ayang gw:v (citlaa_12)
+//ayang gw:v (citlaa_12♡)
 
