@@ -1,3 +1,4 @@
+/*
 import { sticker } from '../lib/sticker.js'
 import fetch from 'node-fetch'
 
@@ -52,3 +53,5 @@ let stikerhuuu = [
  "https://telegra.ph/file/2f618fffab6ff7bea32ab.png",//abang saleh
  "https://telegra.ph/file/dfbf483c209a31f01b4e5.png"//hengker2
 ]
+
+*/
