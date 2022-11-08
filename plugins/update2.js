@@ -47,11 +47,10 @@ handler.all = async m => {
     }
 }
 
-handler.rowner = true
 handler.help = ['update2']
 handler.tags = ['owner']
 handler.command = /^(update2)$/i
-
+handler.rowner = true
 handler.owner = true
 
-module.exports = handler
+export default handler
