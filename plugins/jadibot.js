@@ -123,10 +123,9 @@ const config = {
     await global.tryConnect()
 }
 handler.help = ['jadibot']
-handler.tags = ['jadibot']
-handler.command = /^jadibot$/i
+handler.tags = ['premium']
+handler.command = /^(jadibot)$/i
 handler.premium = true
 handler.limit = true
-handler.private = true 
 
 module.exports = handler
