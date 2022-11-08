@@ -8,10 +8,10 @@ let handler = async(m, { conn, usedPrefix, text, command }) => {
     let json = await res.json()
     await conn.sendFile(m.chat, json.result.files.low, 'bkp.mp4', `Title : ${json.result.title}\nLink : ${json.result.link}\n\nVideo msih kurang HD ?coba klik link di bawah ini \n\n\nHD : ${json.result.files.high}`, m)
 }
-handler.help = ['xnxxdl *link*']
+handler.help = ['xnxxdl *<link>*']
 handler.tags = ['premium']
-handler.command = /^xnxxdl$/i
+handler.command = /^(xnxxdl)$/i
 handler.premium = true
 handler.limit = true
 
-module.exports = handler
+export default handler
