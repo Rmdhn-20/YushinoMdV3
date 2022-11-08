@@ -5,16 +5,9 @@ let handler = async (m, { conn, usedPrefix }) => {
 handler.help = ['getcode']
 handler.tags = ['premium']
 handler.command = /^(getcode)$/i
-handler.owner = false
-handler.mods = false
+
 handler.premium = true
-handler.group = false
-handler.private = false
-
-handler.admin = false
-handler.botAdmin = false
-
 handler.fail = null
 
-module.exports = handler
+export default handler
 
