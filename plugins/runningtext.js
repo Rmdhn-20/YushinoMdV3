@@ -7,10 +7,10 @@ let handler = async (m, { conn, text }) => {
 }
 handler.help = ['runningtext <text>']
 handler.tags = ['tools']
-handler.command = /^(run?ningtext|runtext)$/i
+handler.command = /^(runningtext)|runtext)$/i
 handler.limit = true
 
-module.exports = handler
+export default handler
 
 let { spawn } = require('child_process')
 let fs = require('fs')
