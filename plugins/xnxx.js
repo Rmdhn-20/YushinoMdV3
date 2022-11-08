@@ -14,4 +14,4 @@ handler.command = /^(xnxxsearch)$/i
 handler.premium = true
 handler.limit = true
 
-module.exports = handler
+export default handler
