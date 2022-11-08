@@ -3,6 +3,6 @@ async function handler(m, { usedPrefix }) {
   m.reply(users.map(v => 'wa.me/' + v.jid.replace(/[^0-9]/g, '') + `?text=${usedPrefix}menu (${v.name})`).join('\n'))
 }
 handler.command = handler.help = ['listjadibot']
-handler.tags = ['jadibot']
+handler.tags = ['premium']
 
-module.exports = handler
+export default handler
