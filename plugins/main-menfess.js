@@ -18,7 +18,7 @@ async function handler(m, { command, text, usedPrefix }) {
     jid = jid.replace(/[^0-9]/g, '') + '@s.whatsapp.net';
     let data = (await conn.onWhatsApp(jid))[0] || {};
     if (!data.exists) throw 'Nomer tidak terdaftar di whatsapp.'
-    if (jid == m.sender) throw 'Kenapa kirim menfess ke diri sendiri kak?\nCapek ya? Semangat kak<3'
+    if (jid == m.sender) throw 'Menfess ke diri sendiri kak?\nCapek ya? Semangat kak<3'
 
     let tek = `Hᴀɪ Kᴀᴋ @${data.jid.split('@')[0]}, ᴋᴀᴍᴜ ᴍᴇɴᴇʀɪᴍᴀʜ ᴘᴇsᴀɴ ᴍᴀɴғᴇss ɴɪʜ.\n➴`.trim();
     let ssn = `〠 Dᴀʀɪ : ${name}\n⎙ Pᴇsᴀɴ : ${pesan}\nJam : ${wib}`
@@ -26,7 +26,7 @@ async function handler(m, { command, text, usedPrefix }) {
     let imgr = fla.getRandom()
 
     conn.sendButton(m.chat, `*Done* mengirim menfess kepada @${data.jid.split('@')[0]}`, logs, imgr, [['Menu', '.? all']], m)
-    await conn.send3ButtonDoc(data.jid, tek, ssn, 'Lanjutkan', '.accmenfess', 'Tolak Menfess', '.tolakmenfess', 'Menu', '.? all', m, { contextInfo: { externalAdReply: { showAdAttribution: true,
+    await conn.send3ButtonDoc(data.jid, tek, ssn, 'Lanjutkan ✍️', '.accmenfess', 'Tolak Menfess 💔', '.tolakmenfess', 'Menu', '.? all', m, { contextInfo: { externalAdReply: { showAdAttribution: true,
     mediaUrl: sig,
     mediaType: 2, 
     description: sig,
@@ -50,7 +50,7 @@ async function handler(m, { command, text, usedPrefix }) {
             find.status = 'chatting'
             conn.menfess[find.id] = {...find}
             find = Object.values(conn.menfess).find(menpes => [menpes.a, menpes.b].includes(m.sender))
-            conn.sendMessage(find.a + '@s.whatsapp.net', `_@${m.sender.split("@")[0]} menerima chat dengan anda, sekarang anda bisa melanjutkan menfes dengan dia.._\n\n*NOTE : Jika ingin berhenti dari menfess, silahkan ketik _.stopmenfess_ Untuk hapus session kalian..*`, m)
+            conn.sendMessage(find.a, `_@${m.sender.split("@")[0]} menerima chat dengan anda, sekarang anda bisa melanjutkan menfes dengan dia.._\n\n*NOTE : Jika ingin berhenti dari menfess, silahkan ketik _.stopmenfess_ Untuk hapus session kalian..*`, m)
             m.reply(`*^Done..*\n\nSekarang kamu bisa melanjutkan menfes dengan dia. Ketik sesuatu, bot akan otomatis mengirim pesan mu.\n\n*NOTE : Jika ingin berhenti dari menfess, silahkan ketik _.stopmenfess_ Untuk hapus session kalian..*`)
         } catch (e){
             m.reply(e)
