@@ -5,7 +5,7 @@ export async function before(m, { match }) {
           if(m.isGroup) return
           if(find == undefined) return
           const to = find.a == m.sender ? find.b : find.a
-          conn.sendMessage(to, '*Menfess Reply*\n💬 : ')
+          m.copyNForward(to, true)
     } catch {}
   }
   
